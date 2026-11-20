@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDCE - Controle de Estoque</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <section class="login-box">
+      <header class="logo">
+        <div class="logo-icon">📦</div>
+        <h1>SDCE</h1>
+        <p>Controle de Estoque</p>
+      </header>
+
+      <form id="authForm">
+        <input type="text" id="nome" placeholder="Nome" autocomplete="name" required>
+        <input type="email" id="email" placeholder="E-mail" autocomplete="email" required>
+        <input type="password" id="senha" placeholder="Senha" autocomplete="current-password" required minlength="6">
+        <input type="password" id="confirmarSenha" placeholder="Confirmar senha" class="hidden" minlength="6">
+        <button type="submit" id="submitButton">Entrar</button>
+      </form>
+
+      <div class="separator"><span></span><p>ou</p><span></span></div>
+      <button type="button" class="create-account" id="toggleMode">Criar Conta</button>
+      <p id="message" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

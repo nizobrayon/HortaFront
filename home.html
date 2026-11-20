@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDCE - Painel de Controle</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <div class="home">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo-icon">📦</span>
+        <div>
+          <strong>SDCE</strong>
+          <small>Controle de Estoque</small>
+        </div>
+      </div>
+      <div class="user-area">
+        <span id="userGreeting">Olá!</span>
+        <button id="logoutButton" type="button">Sair</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="welcome">
+        <h1 id="welcomeTitle">Painel de Controle</h1>
+        <p>Gerencie os produtos, o estoque e as movimentações da horta escolar.</p>
+      </section>
+
+      <section class="cards">
+        <button type="button" class="card" data-section="produtos">
+          <span class="card-icon">📦</span>
+          <span class="card-title">Produtos</span>
+          <span class="card-desc">Cadastro e lista de produtos</span>
+        </button>
+        <button type="button" class="card" data-section="estoque">
+          <span class="card-icon">📊</span>
+          <span class="card-title">Estoque</span>
+          <span class="card-desc">Quantidades e alertas</span>
+        </button>
+        <button type="button" class="card" data-section="entradas">
+          <span class="card-icon">⬇️</span>
+          <span class="card-title">Entradas</span>
+          <span class="card-desc">Produtos que entram no estoque</span>
+        </button>
+        <button type="button" class="card" data-section="saidas">
+          <span class="card-icon">⬆️</span>
+          <span class="card-title">Saídas</span>
+          <span class="card-desc">Produtos retirados do estoque</span>
+        </button>
+        <button type="button" class="card" data-section="vendas">
+          <span class="card-icon">💰</span>
+          <span class="card-title">Vendas</span>
+          <span class="card-desc">Histórico de vendas</span>
+        </button>
+        <button type="button" class="card" data-section="relatorios">
+          <span class="card-icon">📈</span>
+          <span class="card-title">Relatórios</span>
+          <span class="card-desc">Resumo do estoque e vendas</span>
+        </button>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2 id="panelTitle">Selecione uma opção acima</h2>
+          <button type="button" id="refreshButton" class="hidden">Atualizar</button>
+        </div>
+        <div class="panel-body" id="panelBody">
+          <p class="placeholder">Escolha uma das funções acima para começar.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="home.js"></script>
+</body>
+</html>
