@@ -378,6 +378,26 @@ async function renderVendas() {
         <tbody>${linhas}</tbody>
       </table>`}`;
 
+  document.querySelectorAll("[data-delvenda]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const idx = Number(btn.dataset.delvenda);
+      const lista = getVendas();
+      const venda = lista[idx];
+      if (venda && venda.id) {
+    let resVenda = {};
+    try {
+          await fetch(`${API}/vendas/${venda.id}/cancelar`, {
+            method: "POST",
+            headers: { Authorization: `Bearer ${token}` }
+          });
+        } catch (e) {}
+      }
+      lista.splice(idx, 1);
+      salvarVendas(lista);
+      renderVendas();
+    });
+  });
+
   document.getElementById("vendaForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const vendedor = document.getElementById("vVendedor").value.trim();
@@ -395,12 +415,14 @@ async function renderVendas() {
       return;
     }
 
+    let resVenda = {};
     try {
-      await fetch(`${API}/vendas`, {
+      const respVenda = await fetch(`${API}/vendas`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ produto_id: produtoId, vendedor, cliente, quantidade, valor })
+        body: JSON.stringify({ produto_id: produtoId, vendedor, cliente, quantidade, valor_total: valor, observacao: `Cliente: ${cliente}` })
       });
+      resVenda = await respVenda.json();
       await fetch(`${API}/saidas`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
@@ -414,6 +436,7 @@ async function renderVendas() {
     } catch (err) {}
 
     const venda = {
+      id: resVenda.id,
       vendedor,
       cliente,
       produtoId,
